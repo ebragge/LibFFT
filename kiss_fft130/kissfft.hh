@@ -48,7 +48,7 @@ struct traits
     std::vector<cpx_type> _twiddles;
 
 
-    const cpx_type twiddle(int i) { return _twiddles[i]; }
+    const cpx_type twiddle(size_t i) { return _twiddles[i]; }
 };
 
 }
@@ -122,8 +122,8 @@ class kissfft
 
         void kf_bfly2( cpx_type * Fout, const size_t fstride, int m)
         {
-            for (int k=0;k<m;++k) {
-                cpx_type t = Fout[m+k] * _traits.twiddle(k*(int)fstride);
+            for (size_t k=0;k<m;++k) {
+                cpx_type t = Fout[m+k] * _traits.twiddle(k*fstride);
                 Fout[m+k] = Fout[k] - t;
                 Fout[k] += t;
             }
@@ -276,7 +276,7 @@ class kissfft
 
                 k=u;
                 for ( q1=0 ; q1<p ; ++q1 ) {
-                    int twidx=0;
+                    size_t twidx=0;
                     Fout[ k ] = scratchbuf[0];
                     for (q=1;q<p;++q ) {
                         twidx += fstride * k;
