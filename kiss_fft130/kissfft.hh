@@ -279,7 +279,7 @@ class kissfft
                     int twidx=0;
                     Fout[ k ] = scratchbuf[0];
                     for (q=1;q<p;++q ) {
-                        twidx += fstride * k;
+                        twidx += (const int)fstride * k;
                         if (twidx>=Norig) twidx-=Norig;
                         C_MUL(t,scratchbuf[q] , twiddles[twidx] );
                         C_ADDTO( Fout[ k ] ,t);
