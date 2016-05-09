@@ -120,7 +120,7 @@ class kissfft
         scalar_type HALF_OF( const scalar_type & a) { return a*.5;}
         void C_MULBYSCALAR(cpx_type & c,const scalar_type & a) {c*=a;}
 
-        void kf_bfly2( cpx_type * Fout, const size_t fstride, int m)
+        void kf_bfly2( cpx_type * Fout, const size_t fstride, size_t m)
         {
             for (size_t k=0;k<m;++k) {
                 cpx_type t = Fout[m+k] * _traits.twiddle(k*fstride);
@@ -276,7 +276,7 @@ class kissfft
 
                 k=u;
                 for ( q1=0 ; q1<p ; ++q1 ) {
-                    size_t twidx=0;
+                    int twidx=0;
                     Fout[ k ] = scratchbuf[0];
                     for (q=1;q<p;++q ) {
                         twidx += fstride * k;
