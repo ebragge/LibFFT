@@ -1,4 +1,8 @@
 .vs/
 ARM/
+x64/
+Debug/
+Release/
 Generated files/
 LibFFT.sdf
+LibFFT.VC.opendb
